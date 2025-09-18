@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-public class Cuenta {
+public abstract class Cuenta {
     protected double saldo;
     protected long numero;
     //getters setters
@@ -73,7 +73,7 @@ public class Cuenta {
         return Objects.hash(saldo, numero, propietario);
     }
 
-    public boolean addTransaccion(Transaccion transaccion) {
+    protected boolean addTransaccion(Transaccion transaccion) {
         //Cuenta c1 es de Luis, saldo 1000 y numero de cuenta 143254498
         //Trasasccion tipo 1, 500€
         if (transaccion.getTipo()==0){ //ingresar

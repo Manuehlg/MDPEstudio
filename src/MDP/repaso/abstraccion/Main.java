@@ -2,7 +2,7 @@ package MDP.repaso.abstraccion;
 
 public class Main {
     public static void main(String[] args) {
-        Cuenta c = new Cuenta(1000.0D, 432432, new Persona("Luis", 5, 5)) ;
+        Cuenta c = new CuentaJoven(1000.0D, 432432, new Persona("Luis", 5, 5)) ;
         c.depositar(1000);
         c.retirar(500);
         System.out.println(c);
