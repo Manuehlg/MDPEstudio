@@ -32,4 +32,9 @@ public class CuentaJoven extends Cuenta {
     public boolean retirar(float cantidad) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
+    @Override
+    public String generarInforme() {
+        return "Informe Cuenta Joven";
+    }
 }

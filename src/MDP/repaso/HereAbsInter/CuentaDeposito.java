@@ -6,4 +6,13 @@ public class CuentaDeposito extends Cuenta {
 
     }
 
+    @Override
+    public String toString() {
+        return "CuentaDeposito{} " + super.toString();
+    }
+
+    @Override
+    public String generarInforme() {
+        return "Informe Cuenta de Deposito";
+    }
 }
