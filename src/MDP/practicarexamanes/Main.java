@@ -8,7 +8,13 @@ public class Main {
 
         Olimpiada oi = new Olimpiada("Z", new Date());
         oi.crearOlimpiada();
-        oi.comprobarpruebasdisputadas();
         System.out.println("Olimpiada creada com sucesso");
+        System.out.println();
+        oi.comprobarpruebasdisputadas();
+        System.out.println();
+        System.out.println(("La comision de France tiene: " + oi.AtletasPorPais("France"))+ " atletas.");
+        System.out.println();
+        oi.ganadorOrosPruebas();
+
     }
 }

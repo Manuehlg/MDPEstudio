@@ -73,4 +73,16 @@ public class Atleta {
     public void setnBronces(int nBronces) {
         this.nBronces = nBronces;
     }
+
+    @Override
+    public String toString() {
+        return "Atleta{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", pais=" + pais +
+                ", nOros=" + nOros +
+                ", nPlatas=" + nPlatas +
+                ", nBronces=" + nBronces +
+                '}';
+    }
 }

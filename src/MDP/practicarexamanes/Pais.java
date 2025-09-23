@@ -55,5 +55,14 @@ public class Pais {
         this.nBronces = nBronces;
     }
 
-
+    @Override
+    public String toString() {
+        return "Pais{" +
+                "idPais=" + idPais +
+                ", nombre='" + nombre + '\'' +
+                ", nOros=" + nOros +
+                ", nPlatas=" + nPlatas +
+                ", nBronces=" + nBronces +
+                '}';
+    }
 }
