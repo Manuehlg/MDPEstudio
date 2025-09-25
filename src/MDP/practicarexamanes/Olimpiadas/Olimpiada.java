@@ -1,4 +1,4 @@
-package MDP.practicarexamanes;
+package MDP.practicarexamanes.Olimpiadas;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -39,8 +39,8 @@ public class Olimpiada {
 
         Prueba salto = new Individual("Salto", new Date(), 0, 0, 0, false);
         Prueba saltoLong = new Individual("Salto de Longitud", new Date(), 0, 0, 0, false);
-        Prueba tiroConArco = new Individual("Tiro con Arco", new Date(), 0, 0, 0, true);
-        Prueba baloncesto = new Colectiva("Balonceso", new Date(), 0, 0, 0, true, 8);
+        Prueba tiroConArco = new Individual("Tiro con Arco", new Date(), 0, 0, 0, false);
+        Prueba baloncesto = new Colectiva("Balonceso", new Date(), 0, 0, 0, false, 8);
         Prueba waterpolo = new Colectiva("Waterpolo", new Date(), 0, 0, 0, false, 10);
         pruebas.add(saltoLong);
         pruebas.add(salto);
@@ -91,15 +91,47 @@ public class Olimpiada {
 
     public void ganadorOrosPruebas() {
 
-        for  (Prueba prueba : pruebas) {
+        for (Prueba prueba : pruebas) {
             if (prueba.isDisputada()) {
-                System.out.println("La prueba de " + prueba.getNombre() + " se disputo en la fecha " + prueba.getFecha() + " y gano el atleta " + prueba.getOro());
+                System.out.println("La prueba de " + prueba.getNombre() + " se disputo en la fecha " + prueba.getFecha() + " y gano el pais " + paises.get(prueba.getOro()).getNombre());
             }
         }
 
     }
 
+    public void mostrarRanking() {
+        for (Atleta atleta : atletas) {
+            if (atleta.getnOros() > 0) {
+                System.out.println(atleta.getNombre());
+            }
+        }
+    }
 
+    public void actualizar(int idOro, int idPlata, int idBronce, String nPrueba) {
+
+        for (Prueba prueba : pruebas) {
+            if (prueba.getNombre().equals(nPrueba)) {
+
+                for (Atleta atleta : atletas) {
+
+                    if (atleta.getId() == idOro) {
+                        atleta.setnOros(atleta.getnOros() + 1);
+                        atleta.getPais().setnOros(atleta.getPais().getnOros() + 1);
+
+                    } else if (atleta.getId() == idPlata) {
+                        atleta.setnPlatas(atleta.getnPlatas() + 1);
+                        atleta.getPais().setnPlatas(atleta.getPais().getnPlatas() + 1);
+
+                    } else if (atleta.getId() == idBronce) {
+                        atleta.setnBronces(atleta.getnBronces() + 1);
+                        atleta.getPais().setnBronces(atleta.getPais().getnBronces() + 1);
+                    }
+
+                }
+                prueba.setDisputada(true);
+            }
+        }
+    }
 
     //getters and setters, equals and hash, toString
     public String getNombreOlimpiada() {

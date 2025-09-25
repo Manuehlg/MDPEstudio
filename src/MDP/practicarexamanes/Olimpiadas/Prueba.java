@@ -1,4 +1,4 @@
-package MDP.practicarexamanes;
+package MDP.practicarexamanes.Olimpiadas;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -8,9 +8,9 @@ public abstract class Prueba {
     protected String nombre;
     protected Date fecha;
 
-    protected int oro;
-    protected int plata;
-    protected int bronce;
+    protected int oro; //idpais
+    protected int plata; //idpais
+    protected int bronce; //idpais
     // se relacionan con el pais ganador
 
     protected boolean disputada;

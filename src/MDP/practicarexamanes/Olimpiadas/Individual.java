@@ -1,4 +1,4 @@
-package MDP.practicarexamanes;
+package MDP.practicarexamanes.Olimpiadas;
 
 import java.util.Date;
 
