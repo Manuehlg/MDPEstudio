@@ -10,6 +10,12 @@ public class Main {
 
         System.out.println("Hay un total de "+biblioMerida.buscarNumeroPrestamosActuales("Titulo Generico3") +" Titulo Generico3 en prestamo");
 
+        System.out.println("Libros de tematica Informatica que no estan en prestamo:");
+        for (Libro libro : biblioMerida.mostrarLibrosSinPrestamo("Informatica")){
+            System.out.println(libro);
+        }
+
+
 
 
 

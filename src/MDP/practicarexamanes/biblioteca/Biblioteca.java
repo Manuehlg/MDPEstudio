@@ -19,19 +19,19 @@ public class Biblioteca {
     }
 
 
-    public void crearBibliteca (){
+    public void crearBibliteca() {
         Random random = new Random();
         int i;
         int j;
-        for ( i = 0; i<5; i++) {
+        for (i = 0; i < 5; i++) {
             usuarios.add(new Usuario("Alumno" + i, i, i % 2 == 0));
         }
-        for ( j = 0; j<5; j++) {
-            libros.add(new Libro("Titulo Generico"+j, "Autor Generico"+j ,
-                    random.nextInt(20)+1, "TematicaGenerica"+j ));
+        for (j = 0; j < 5; j++) {
+            libros.add(new Libro("Titulo Generico" + j, "Autor Generico" + j,
+                    random.nextInt(20) + 1, "TematicaGenerica" + j));
         }
         prestamos.add(new Prestamo(LocalDate.now(), LocalDate.now(), LocalDate.now(),
-                usuarios.get(random.nextInt(usuarios.size())), libros.get(random.nextInt(libros.size())) ));
+                usuarios.get(random.nextInt(usuarios.size())), libros.get(random.nextInt(libros.size()))));
 
         /*
          prestamos.add(new Prestamo(LocalDate.now(), LocalDate.now(), LocalDate.now(),
@@ -50,13 +50,33 @@ public class Biblioteca {
          -> Libro con stock negativo para comprobacion CalcularTotalLibrosStockPositivo
          */
 
+/*
+        Libro libro1 = new Libro("Titulo Generico45", "Autor Generico342", 5, "Informatica");
+        Libro libro3 = new Libro("Titulo Generico44", "Autor Generico334", 2, "Informatica");
+        libros.add(libro1);
+        libros.add(libro3);
+
+        Usuario usuario1 = new Usuario("Alumno0", 342, true);
+
+        Prestamo prestamo1 = new Prestamo(
+                LocalDate.now(),
+                LocalDate.now().plusDays(15),
+                null,
+                usuario1,
+                libro1   // libro de tematica Informatica
+        );
+        prestamos.add(prestamo1);
+
+        -> Comprobar metodo mostrarLibrosSinPrestamo
+*/
+
     }
 
-    public int CalcularTotalLibrosStockPositivo(){
+    public int CalcularTotalLibrosStockPositivo() {
         int totalLibrosStockPositivo = 0;
 
-        for (Libro libro: libros){
-            if (libro.getStock() >= 0){
+        for (Libro libro : libros) {
+            if (libro.getStock() >= 0) {
                 totalLibrosStockPositivo++;
             }
         }
@@ -65,15 +85,36 @@ public class Biblioteca {
 
     }
 
-    public int buscarNumeroPrestamosActuales(String nombrechulo){
-        int totalPrestamosActuales =0;
+    public int buscarNumeroPrestamosActuales(String nombrechulo) {
+        int totalPrestamosActuales = 0;
 
-        for (Prestamo prestamo : prestamos){
-            if (prestamo.getLibro().getTitulo().equals(nombrechulo)){
+        for (Prestamo prestamo : prestamos) {
+            if (prestamo.getLibro().getTitulo().equals(nombrechulo)) {
                 totalPrestamosActuales++;
             }
         }
         return totalPrestamosActuales;
+    }
+
+    public ArrayList<Libro> mostrarLibrosSinPrestamo(String tematicachula) {
+        ArrayList<Libro> librosSinPrestamosSegunTematica = new ArrayList<>();
+
+        for (Libro libro : libros) {
+            if (libro.getTematica().equals(tematicachula)) {
+                boolean estaPrestado = false;
+                for (Prestamo prestamo : prestamos) {
+                    if (prestamo.getLibro() == libro) {
+                        estaPrestado = true;
+                        break;
+                    }
+                }
+                if (!estaPrestado){
+                    librosSinPrestamosSegunTematica.add(libro);
+                }
+            }
+        }
+        return librosSinPrestamosSegunTematica;
+
     }
 
     public List<Libro> getLibros() {
