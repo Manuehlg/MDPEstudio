@@ -33,6 +33,24 @@ public class Biblioteca {
         prestamos.add(new Prestamo(LocalDate.now(), LocalDate.now(), LocalDate.now(),
                 usuarios.get(random.nextInt(usuarios.size())), libros.get(random.nextInt(libros.size())) ));
         System.out.println(prestamos);
+
+        //libros.add(new Libro("Titulo Generico"+j+1, "Autor Generico"+j+1 ,
+        //        -2, "TematicaGenerica"+j+1 ));
+        //Libro con stock negativo para comprobacion CalcularTotalLibrosStockPositivo
+
+    }
+
+    public int CalcularTotalLibrosStockPositivo(){
+        int totalLibrosStockPositivo = 0;
+
+        for (Libro libro: libros){
+            if (libro.getStock() >= 0){
+                totalLibrosStockPositivo++;
+            }
+        }
+
+        return totalLibrosStockPositivo;
+
     }
 
     public List<Libro> getLibros() {

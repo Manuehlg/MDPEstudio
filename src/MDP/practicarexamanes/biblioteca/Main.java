@@ -6,6 +6,7 @@ public class Main {
         biblioMerida.crearBibliteca();
         System.out.println("Biblio creada ratilla");
 
+        System.out.println("Hay un total de "+biblioMerida.CalcularTotalLibrosStockPositivo()+" libros con stock disponible en la biblioteca");
 
 
 
