@@ -8,6 +8,9 @@ public class Main {
 
         System.out.println("Hay un total de "+biblioMerida.CalcularTotalLibrosStockPositivo()+" libros con stock disponible en la biblioteca");
 
+        System.out.println("Hay un total de "+biblioMerida.buscarNumeroPrestamosActuales("Titulo Generico3") +" Titulo Generico3 en prestamo");
+
+
 
 
     }

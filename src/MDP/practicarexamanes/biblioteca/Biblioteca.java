@@ -32,11 +32,23 @@ public class Biblioteca {
         }
         prestamos.add(new Prestamo(LocalDate.now(), LocalDate.now(), LocalDate.now(),
                 usuarios.get(random.nextInt(usuarios.size())), libros.get(random.nextInt(libros.size())) ));
-        System.out.println(prestamos);
 
-        //libros.add(new Libro("Titulo Generico"+j+1, "Autor Generico"+j+1 ,
-        //        -2, "TematicaGenerica"+j+1 ));
-        //Libro con stock negativo para comprobacion CalcularTotalLibrosStockPositivo
+        /*
+         prestamos.add(new Prestamo(LocalDate.now(), LocalDate.now(), LocalDate.now(),
+                usuarios.get(random.nextInt(usuarios.size())), libros.get(3) ));
+         prestamos.add(new Prestamo(LocalDate.now(), LocalDate.now(), LocalDate.now(),
+                usuarios.get(random.nextInt(usuarios.size())), libros.get(3) ));
+         prestamos.add(new Prestamo(LocalDate.now(), LocalDate.now(), LocalDate.now(),
+                usuarios.get(random.nextInt(usuarios.size())), libros.get(3) ));
+
+         -> Prestamos para comprobrar buscarNumeroPrestamosActuales
+        */
+
+        /*
+         libros.add(new Libro("Titulo Generico"+j+1, "Autor Generico"+j+1 ,
+                -2, "TematicaGenerica"+j+1 ));
+         -> Libro con stock negativo para comprobacion CalcularTotalLibrosStockPositivo
+         */
 
     }
 
@@ -51,6 +63,17 @@ public class Biblioteca {
 
         return totalLibrosStockPositivo;
 
+    }
+
+    public int buscarNumeroPrestamosActuales(String nombrechulo){
+        int totalPrestamosActuales =0;
+
+        for (Prestamo prestamo : prestamos){
+            if (prestamo.getLibro().getTitulo().equals(nombrechulo)){
+                totalPrestamosActuales++;
+            }
+        }
+        return totalPrestamosActuales;
     }
 
     public List<Libro> getLibros() {
