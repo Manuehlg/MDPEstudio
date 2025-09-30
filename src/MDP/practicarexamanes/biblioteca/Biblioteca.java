@@ -108,13 +108,49 @@ public class Biblioteca {
                         break;
                     }
                 }
-                if (!estaPrestado){
+                if (!estaPrestado) {
                     librosSinPrestamosSegunTematica.add(libro);
                 }
             }
         }
         return librosSinPrestamosSegunTematica;
 
+    }
+
+    public boolean reservar(int idUsuario, String nombreLibro) {
+
+        for (Usuario usu : usuarios) {
+            if (usu.getId() == idUsuario) {
+                for (Libro libro : libros) {
+                    if (libro.getTitulo().equals(nombreLibro)) {
+                        if (!usu.isAmonestado()) {
+                            if (libro.getStock() > 0) {
+                                prestamos.add(new Prestamo(LocalDate.now(), LocalDate.now(), LocalDate.now(), usu, libro));
+
+                                libro.setStock(libro.getStock() - 1);
+
+                                return true;
+                            } else {
+                                espera.add(new Prestamo(LocalDate.now(), LocalDate.now(), LocalDate.now(), usu, libro));
+                                System.out.println("Añadido a cola de espera");
+                                return false;
+                            }
+                        } else {
+                            System.out.println("El usuario esta amonestado");
+                            return false;
+                        }
+                    }
+                }
+                System.out.println("El libro no existe");
+                return false;
+            }
+        }
+        System.out.println("El usuario no existe");
+        return false;
+    }
+
+    public boolean devolver(int idUsuario, String nombreLibro) {
+        return false;
     }
 
     public List<Libro> getLibros() {

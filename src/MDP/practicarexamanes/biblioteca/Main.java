@@ -15,6 +15,8 @@ public class Main {
             System.out.println(libro);
         }
 
+        System.out.println("Efectuando reserva... "+ biblioMerida.reservar(3,"Titulo Generico2"));
+
 
 
 
