@@ -16,8 +16,12 @@ public class Main {
         }
 
         System.out.println("Efectuando reserva... "+ biblioMerida.reservar(3,"Titulo Generico2"));
+        System.out.println("Efectuando reserva... "+ biblioMerida.reservar(122,"Titulo Generico2"));
+        System.out.println("Efectuando reserva... "+ biblioMerida.reservar(3,"Titulo Gen"));
 
-
+        System.out.println("Devolviendo prestamo..." +biblioMerida.devolver(3, "Titulo Generico2"));
+        System.out.println("Devolviendo prestamo..." +biblioMerida.devolver(35, "Titulo Generico2"));
+        System.out.println("Devolviendo prestamo..." +biblioMerida.devolver(3, "Titunerico2"));
 
 
 

@@ -1,7 +1,9 @@
 package MDP.practicarexamanes.biblioteca;
 
+import java.awt.*;
 import java.time.LocalDate;
 import java.util.*;
+import java.util.List;
 
 public class Biblioteca {
 
@@ -150,6 +152,18 @@ public class Biblioteca {
     }
 
     public boolean devolver(int idUsuario, String nombreLibro) {
+
+        for (Prestamo p : prestamos){
+            if (p.getUsuario().getId() == idUsuario && p.getLibro().getTitulo().equals(nombreLibro)){
+
+                p.getLibro().setStock(p.getLibro().getStock()+1);
+
+                return prestamos.remove(p);
+
+
+            }
+        }
+        System.out.println("El prestamo no existe");
         return false;
     }
 
@@ -185,10 +199,15 @@ public class Biblioteca {
         this.espera = espera;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (!(o instanceof Biblioteca that)) return false;
-        return Objects.equals(libros, that.libros) && Objects.equals(usuarios, that.usuarios) && Objects.equals(prestamos, that.prestamos) && Objects.equals(espera, that.espera);
+//    @Override
+//    public boolean equals(Object o) {
+//        if (!(o instanceof Biblioteca that)) return false;
+//        return Objects.equals(libros, that.libros) && Objects.equals(usuarios, that.usuarios) && Objects.equals(prestamos, that.prestamos) && Objects.equals(espera, that.espera);
+//    }
+
+    public boolean equals(Object o){
+        Biblioteca aux = (Biblioteca) o;
+        return this.libros == aux.libros && this.prestamos == aux.prestamos && this.espera == aux.espera && this.usuarios==aux.usuarios;
     }
 
     @Override
