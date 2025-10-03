@@ -1,13 +1,11 @@
 package MDP.practicarexamanes.tienda;
 
-import java.util.Queue;
-
 public class Juego extends Producto {
     private String plataforma;
     private int pegi;
 
-    public Juego(int idProducto, String nombre, float precio, int stock, Queue<Cliente> listaEspera, String plataforma, int pegi) {
-        super(idProducto, nombre, precio, stock, listaEspera);
+    public Juego(int idProducto, String nombre, float precio, int stock, String plataforma, int pegi) {
+        super(idProducto, nombre, precio, stock);
         this.plataforma = plataforma;
         this.pegi = pegi;
     }

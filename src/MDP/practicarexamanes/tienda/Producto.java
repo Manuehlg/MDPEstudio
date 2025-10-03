@@ -1,5 +1,6 @@
 package MDP.practicarexamanes.tienda;
 
+import java.util.LinkedList;
 import java.util.Queue;
 
 public abstract class Producto {
@@ -11,12 +12,12 @@ public abstract class Producto {
     private Queue<Cliente> listaEspera;
 
 
-    public Producto(int idProducto, String nombre, float precio, int stock, Queue<Cliente> listaEspera) {
+    public Producto(int idProducto, String nombre, float precio, int stock) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.precio = precio;
         this.stock = stock;
-        this.listaEspera = listaEspera;
+        this.listaEspera = new LinkedList<>();
     }
 
     public int getIdProducto() {

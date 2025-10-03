@@ -8,16 +8,16 @@ public class Cliente {
     private String nombre;
     private int telefono;
     private int edad;
-    private List<Producto> historiaCompra;
+    private List<Producto> historialCompra;
     private boolean vip;
 
 
-    public Cliente(int nif, String nombre, int telefono, int edad, List<Producto> historiaCompra, boolean vip) {
+    public Cliente(int nif, String nombre, int telefono, int edad, boolean vip) {
         this.nif = nif;
         this.nombre = nombre;
         this.telefono = telefono;
         this.edad = edad;
-        this.historiaCompra = new ArrayList<>();
+        this.historialCompra = new ArrayList<>();
         this.vip = vip;
     }
 
@@ -53,12 +53,12 @@ public class Cliente {
         this.edad = edad;
     }
 
-    public List<Producto> getHistoriaCompra() {
-        return historiaCompra;
+    public List<Producto> getHistorialCompra() {
+        return historialCompra;
     }
 
-    public void setHistoriaCompra(List<Producto> historiaCompra) {
-        this.historiaCompra = historiaCompra;
+    public void setHistorialCompra(List<Producto> historialCompra) {
+        this.historialCompra = historialCompra;
     }
 
     public boolean isVip() {
