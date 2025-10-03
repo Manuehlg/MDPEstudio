@@ -1,12 +1,10 @@
 package MDP.practicarexamanes.tienda;
 
-import java.util.Queue;
-
 public class Consola extends Producto{
     private boolean conMandos;
 
-    public Consola(int idProducto, String nombre, float precio, int stock, Queue<Cliente> listaEspera, boolean conMandos) {
-        super(idProducto, nombre, precio, stock, listaEspera);
+    public Consola(int idProducto, String nombre, float precio, int stock, boolean conMandos) {
+        super(idProducto, nombre, precio, stock);
         this.conMandos = conMandos;
     }
 
@@ -17,5 +15,10 @@ public class Consola extends Producto{
 
     public void setConMandos(boolean conMandos) {
         this.conMandos = conMandos;
+    }
+
+    public boolean equals ( Object o ){
+        Consola aux = (Consola) o;
+        return this.getIdProducto() == aux.getIdProducto() && this.getNombre().equals(aux.getNombre());
     }
 }
