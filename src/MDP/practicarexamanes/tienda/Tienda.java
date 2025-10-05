@@ -68,6 +68,22 @@ public class Tienda {
     }
 
 
+    // se podria mejorar detectando que el cliente no existe y devolver un null o algo
+    public float gastoTotalCliente(int id){
+
+        float total = 0;
+
+        for (Cliente c : clientes){
+            if (c.getNif() == id){
+                for ( Producto p : c.getHistorialCompra()){
+                    total += p.getPrecio();
+                }
+
+            }
+        }
+
+        return total;
+    }
 
     public String getNombre() {
         return nombre;
