@@ -6,6 +6,8 @@ public class Main {
 
         tiendota.crearTiendina();
         System.out.println("Una tienda ha spawneado");
+
+        System.out.println("Hay un total de: "+ tiendota.calcularProductosDisponiblesStock() + " productos con stock disponible");
     }
 
 

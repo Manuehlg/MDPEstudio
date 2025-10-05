@@ -35,6 +35,7 @@ public class Tienda {
         Juego Banananza = new Juego (3, "KD Banananza", 89.01f, 59, "NoTendo", 12);
         Juego OdiseadeMariano = new Juego (4, "Odisea de Mariano", 45.81f, 14, "NoTendo", 15);
         Accesorio Pokeballfriki = new Accesorio ( 5, "Bola de Bichos", 4f, 6, false);
+
         productos.add(plei);
         productos.add(Jbox);
         productos.add(Banananza);
@@ -47,8 +48,26 @@ public class Tienda {
         c4.getHistorialCompra().add(plei);
         c5.getHistorialCompra().add(plei);
 
+        //probar calcularProductosDisponiblesStock
+
+        Consola plei7 = new Consola (1, "Plai7", 212.12f, 0, true);
+        productos.add(plei7);
+
 
     }
+
+    public int calcularProductosDisponiblesStock(){
+        int total = 0;
+
+        for (Producto p : productos){
+            if (p.getStock() >0){
+                total++;
+            }
+        }
+        return total;
+    }
+
+
 
     public String getNombre() {
         return nombre;
