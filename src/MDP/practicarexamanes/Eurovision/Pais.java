@@ -1,5 +1,6 @@
 package MDP.practicarexamanes.Eurovision;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Pais {
@@ -9,14 +10,17 @@ public class Pais {
     private Cantante cantante;
     private Presentador presentador;
     private List<Coreografo> coreografos;
+    private List<Puntos> puntosEmitidos;
+    private List<Puntos> puntosRecibidos;
 
-
-    public Pais(String nombre, int sumaTotalPuntos, Cantante cantante, Presentador presentador, List<Coreografo> coreografos) {
+    public Pais(Presentador presentador, String nombre, int sumaTotalPuntos, Cantante cantante) {
+        this.presentador = presentador;
         this.nombre = nombre;
         this.sumaTotalPuntos = sumaTotalPuntos;
         this.cantante = cantante;
-        this.presentador = presentador;
-        this.coreografos = coreografos;
+        this.coreografos = new ArrayList<>();
+        this.puntosRecibidos = new ArrayList<>();
+        this.puntosEmitidos = new ArrayList<>();
     }
 
     public String getNombre() {
@@ -58,4 +62,22 @@ public class Pais {
     public void setCoreografos(List<Coreografo> coreografos) {
         this.coreografos = coreografos;
     }
+
+    public List<Puntos> getPuntosEmitidos() {
+        return puntosEmitidos;
+    }
+
+    public void setPuntosEmitidos(List<Puntos> puntosEmitidos) {
+        this.puntosEmitidos = puntosEmitidos;
+    }
+
+    public List<Puntos> getPuntosRecibidos() {
+        return puntosRecibidos;
+    }
+
+    public void setPuntosRecibidos(List<Puntos> puntosRecibidos) {
+        this.puntosRecibidos = puntosRecibidos;
+    }
+
+
 }
