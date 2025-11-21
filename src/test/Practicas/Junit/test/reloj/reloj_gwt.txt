@@ -1,0 +1,78 @@
+Tests de Excepciones - Formato Given-When-Then
+
+Excepciones RelojNoValido - Constructor
+testConstructorHorasInvalidas:
+
+Given: Se intenta crear un reloj con horas inválidas (-1, 24, o 25)
+When: Se llama al constructor new Reloj(horaInvalida, 0, 0)
+Then: Se lanza la excepción RelojNoValido
+testConstructorMinutosInvalidos:
+
+Given: Se intenta crear un reloj con minutos inválidos (-1 o 60)
+When: Se llama al constructor new Reloj(0, minutoInvalido, 0)
+Then: Se lanza la excepción RelojNoValido
+testConstructorSegundosInvalidos:
+
+Given: Se intenta crear un reloj con segundos inválidos (-1 o 60)
+When: Se llama al constructor new Reloj(0, 0, segundoInvalido)
+Then: Se lanza la excepción RelojNoValido
+Excepciones RelojNoValido - Setters
+testSetHoursInvalido:
+
+Given: Un reloj válido creado con valores correctos (1,1,1)
+When: Se intenta establecer horas inválidas (-1 o 24) con setHours()
+Then: Se lanza la excepción RelojNoValido
+testSetMinutesInvalido:
+
+Given: Un reloj válido creado con valores correctos (1,1,1)
+When: Se intenta establecer minutos inválidos (-1 o 60) con setMinutes()
+Then: Se lanza la excepción RelojNoValido
+testSetSecondsInvalido:
+
+Given: Un reloj válido creado con valores correctos (1,1,1)
+When: Se intenta establecer segundos inválidos (-1 o 60) con setSeconds()
+Then: Se lanza la excepción RelojNoValido
+Excepciones DesbordamientoReloj - Incremento
+testIncSegDesbordamiento:
+
+Given: Un reloj configurado en 23:59:59 (último segundo del día)
+When: Se llama al método incSeg() para incrementar un segundo
+Then: Se lanza la excepción DesbordamientoReloj (porque pasaría a 24:00:00)
+Excepciones DesbordamientoReloj - Decremento
+testDecSegDesbordamiento:
+
+Given: Un reloj configurado en 00:00:00 (primer segundo del día)
+When: Se llama al método decSeg() para decrementar un segundo
+Then: Se lanza la excepción DesbordamientoReloj (porque saldría del rango válido)
+Excepciones DesbordamientoReloj - Suma de Relojes
+testAddClockDesbordamiento:
+
+Given: Dos relojes válidos donde r1=20:00:00 y r2=5:00:00
+When: Se llama a r1.addClock(r2) para sumar los tiempos
+Then: Se lanza la excepción DesbordamientoReloj (porque 20+5=25 >= 24)
+testAddClockDesbordamientoExacto:
+
+Given: Dos relojes válidos donde r1=12:00:00 y r2=12:00:00
+When: Se llama a r1.addClock(r2) para sumar los tiempos
+Then: Se lanza la excepción DesbordamientoReloj (porque 12+12=24 >= 24)
+Tests de Casos Normales (Sin Excepciones)
+testConstructorValido:
+
+Given: Valores válidos para horas, minutos y segundos (1,1,1)
+When: Se crea un reloj con new Reloj(1,1,1)
+Then: El reloj se crea correctamente sin lanzar excepciones
+testIncSegNormal:
+
+Given: Un reloj configurado en 01:01:01
+When: Se llama a incSeg()
+Then: El reloj cambia a 01:01:02 sin lanzar excepciones
+testDecSegNormal:
+
+Given: Un reloj configurado en 01:01:01
+When: Se llama a decSeg()
+Then: El reloj cambia a 01:01:00 sin lanzar excepciones
+testAddClockNormal:
+
+Given: Dos relojes r1=01:01:01 y r2=01:01:01
+When: Se llama a r1.addClock(r2)
+Then: r1 cambia a 02:02:02 sin lanzar excepciones

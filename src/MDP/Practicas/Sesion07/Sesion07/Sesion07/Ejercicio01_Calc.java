@@ -13,11 +13,16 @@ public class Ejercicio01_Calc {
 		return a * b;
 	}
 
-	public double divide(double a, double b) {
-		if (b == 0) {
-			throw new ArithmeticException();
-		}
-		return a / b;
+	public double divide(double a, double b) throws MDPException {
+
+			if (b == 0) {
+				throw new MDPException();
+			}
+			return a / b;
+
+
 	}
+
+
 
 }

@@ -1,0 +1,85 @@
+Lista completa de pruebas sugeridas en formato Given–When–Then
+º
+A. Constructor por defecto
+
+Given: Se crea una cuenta con el constructor sin parámetros
+When: Consulto getDisponible()
+Then: El saldo inicial debe ser 0.0F.
+
+
+B. Constructor con saldo inicial (con excepción)
+
+
+Given: Se crea una cuenta con saldo inicial 1500.0F
+When: Consulto getDisponible()
+Then: El saldo debe ser 1500.0F.
+
+
+Given: Se crea una cuenta con saldo inicial 500.0F
+When: Invoco el constructor
+Then: Se lanza ExceptionCuentaRacana.
+
+
+
+C. Depósitos (con excepción)
+
+
+Given: Cuenta con saldo 0.0F
+When: Deposito 500.0F
+Then: No se lanza excepción y el saldo pasa a 500.0F.
+
+
+Given: Cuenta con saldo 1000.0F
+When: Deposito -100.0F
+Then: Se lanza ExceptionNumeroNegativo y el saldo permanece en 1000.0F.
+
+
+Given: Cuenta con saldo 1000.0F
+When: Deposito 0.0F
+Then: Se lanza ExceptionNumeroNegativo y el saldo permanece en 1000.0F.
+
+
+
+D. Retiros (con excepción)
+
+
+Given: Cuenta con saldo 1000.0F
+When: Retiro 500.0F
+Then: No se lanza excepción y el saldo pasa a 500.0F.
+
+
+Given: Cuenta con saldo 1000.0F
+When: Retiro 1500.0F
+Then: Se lanza ExceptionSaldoInsuficiente y el saldo permanece en 1000.0F.
+
+
+Given: Cuenta con saldo 1000.0F
+When: Retiro -100.0F
+Then: Se lanza ExceptionNumeroNegativo y el saldo permanece en 1000.0F.
+
+
+Given: Cuenta con saldo 1000.0F
+When: Retiro 0.0F
+Then: Se lanza ExceptionNumeroNegativo y el saldo permanece en 1000.0F.
+
+
+
+E. Casos límite
+
+
+Given: Cuenta con saldo 1000.0F
+When: Retiro exactamente 1000.0F
+Then: No se lanza excepción y el saldo pasa a 0.0F.
+
+
+Given: Cuenta con saldo 0.0F
+When: Intento retirar cualquier cantidad positiva
+Then: Se lanza ExceptionSaldoInsuficiente y el saldo permanece en 0.0F.
+
+
+
+F. Robustez
+
+Given: Cuenta creada con saldo válido
+When: Realizo varias operaciones válidas (depósitos y retiros)
+Then: El saldo final es correcto y no se lanza excepción.

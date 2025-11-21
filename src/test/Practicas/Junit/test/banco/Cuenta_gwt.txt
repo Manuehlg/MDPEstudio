@@ -1,0 +1,69 @@
+Lista completa de pruebas sugeridas en formato Given–When–Then
+
+
+### **A. Constructor por defecto**
+
+1.  **Given:** Se crea una cuenta con el constructor sin parámetros  
+    **When:** Consulto `getDisponible()`  
+    **Then:** El saldo inicial debe ser `0.0F`.
+
+***
+
+### **B. Constructor con saldo inicial**
+
+2.  **Given:** Se crea una cuenta con saldo inicial `1500.0F`  
+    **When:** Consulto `getDisponible()`  
+    **Then:** El saldo debe ser `1500.0F`.
+
+3.  **Given:** Se crea una cuenta con saldo inicial `500.0F`  
+    **When:** Consulto `getDisponible()`  
+    **Then:** El saldo debe ser `0.0F` (porque no se permite saldo menor a 1000 según la lógica actual).
+
+***
+
+### **C. Depósitos**
+
+4.  **Given:** Cuenta con saldo `0.0F`  
+    **When:** Deposito `500.0F`  
+    **Then:** El método devuelve `true` y el saldo pasa a `500.0F`.
+
+5.  **Given:** Cuenta con saldo `1000.0F`  
+    **When:** Deposito `-100.0F`  
+    **Then:** El método devuelve `false` y el saldo permanece en `1000.0F`.
+
+6.  **Given:** Cuenta con saldo `1000.0F`  
+    **When:** Deposito `0.0F`  
+    **Then:** El método devuelve `false` y el saldo permanece en `1000.0F`.
+
+***
+
+### **D. Retiros**
+
+7.  **Given:** Cuenta con saldo `1000.0F`  
+    **When:** Retiro `500.0F`  
+    **Then:** El método devuelve `true` y el saldo pasa a `500.0F`.
+
+8.  **Given:** Cuenta con saldo `1000.0F`  
+    **When:** Retiro `1500.0F`  
+    **Then:** El método devuelve `false` y el saldo permanece en `1000.0F`.
+
+9.  **Given:** Cuenta con saldo `1000.0F`  
+    **When:** Retiro `-100.0F`  
+    **Then:** El método devuelve `false` y el saldo permanece en `1000.0F`.
+
+10. **Given:** Cuenta con saldo `1000.0F`  
+    **When:** Retiro `0.0F`  
+    **Then:** El método devuelve `false` y el saldo permanece en `1000.0F`.
+
+***
+
+### **E. Casos límite**
+
+11. **Given:** Cuenta con saldo `1000.0F`  
+    **When:** Retiro exactamente `1000.0F`  
+    **Then:** El método devuelve `true` y el saldo pasa a `0.0F`.
+
+12. **Given:** Cuenta con saldo `0.0F`  
+    **When:** Intento retirar cualquier cantidad positiva  
+    **Then:** El método devuelve `false` y el saldo permanece en `0.0F`.
+

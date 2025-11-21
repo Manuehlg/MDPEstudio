@@ -73,10 +73,11 @@ public class Onlae {
     }
 
     // TODO
-    public Usuario buscarUsuario(String dni) {
+    public Usuario buscarUsuario(String dni) throws UsuarioNoEncontrado {
         if ( usuarios.containsKey(dni)){
             return usuarios.get(dni);
 
+            throw new UsuarioNoEncontrado();
         }
         return null;
     }
@@ -125,14 +126,22 @@ public class Onlae {
     public boolean jugarSorteo(String dni, LocalDate fechaSorteo, int tipoBoleto) {
 
 
-        Usuario u = buscarUsuario(dni);
-        Sorteo s = buscarSorteo(fechaSorteo);
+        Usuario u = null;
+        try {
+            u = buscarUsuario(dni);
 
-        if (u != null  && s !=null) {
-            s.comprarBoleto(tipoBoleto, u);
-            return true;
+            Sorteo s = buscarSorteo(fechaSorteo);
 
+            if (s !=null) {
+                boolean comprado = s.comprarBoleto(tipoBoleto, u);
+                return comprado;
+
+            }
+
+        } catch (UsuarioNoEncontrado e) {
+            return false;
         }
+
 
 
         return false;
